@@ -1,0 +1,44 @@
+.profile-content__input-image {
+    display: flex;
+    align-items: center;
+    width: 680px;
+    margin-bottom: 76px;
+}
+
+.profile-content__input-image--circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+}
+
+.profile-content__input-image--group {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-content__input-image--group span {
+    margin-left: 40px;
+}
+
+.profile-content__input-image--circle img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.profile-content__input-image--button {
+    width: 180px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff5555;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid #ff5555;
+    margin-left: 40px;
+    cursor: pointer;
+}
