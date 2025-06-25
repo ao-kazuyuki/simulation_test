@@ -1,0 +1,90 @@
+.sell-content__image-area {
+    width: 680px;
+    min-height: 150px;
+    border: dashed 1px #5f5f5f;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.sell-content__input-image--button {
+    width: 165px;
+    height: 45px;
+    color: #ff5555;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid #ff5555;
+    cursor: pointer;
+}
+
+.sell-content__sub-section {
+    width: 680px;
+    font-size: 30px;
+    color: #5f5f5f;
+    padding-bottom: 5px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid #5f5f5f;
+}
+
+.sell-content__image-group,
+.sell-content__category-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.sell-content__categories {
+    width: 680px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.sell-content__category {
+    display: none;
+}
+
+.sell-content__category-label {
+    display: inline-block;
+    text-align: center;
+    color: #ff5655;
+    border: solid 2px #ff5655;
+    border-radius: 16px;
+    min-width: 52px;
+    padding: 2px 12px;
+    margin: 16px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sell-content__category:checked+.sell-content__category-label {
+    color: #ffffff;
+    background-color: #ff5655;
+}
+
+.sell-content__selecter {
+    margin-top: 19px;
+    margin-bottom: 35px;
+    width: 680px;
+    height: 45px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.form-menu__input::placeholder {
+    font-size: 24px;
+    color: #000000;
+    opacity: 1;
+}
+
+.sell-content__textarea {
+    width: 680px;
+    height: 125px;
+    font-size: 24px;
+    padding: 10px 20px;
+    margin-bottom: 36px;
+    resize: none;
+}
