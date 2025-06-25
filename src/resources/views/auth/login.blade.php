@@ -18,7 +18,7 @@
                     <span class="form-menu__error">{{ $message }}</span>
                 @enderror
             </div>
-            <input class="form-menu__input" name="email" type="email">
+            <input class="form-menu__input" name="email" type="email" value="{{ old('email') }}">
         </div>
         <div class="form-menu__group">
             <div class="form-menu__section-group">
