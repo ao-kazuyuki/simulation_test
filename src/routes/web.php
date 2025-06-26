@@ -6,8 +6,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ItemController;
 
 Route::controller(RegisterController::class)->group(function(){
-    Route::get('/register', 'register');
-    Route::post('/register', 'store');
+    Route::middleware('guest')->group(function(){
+        Route::get('/register', 'register')->name('register');
+        Route::post('/register', 'store');
+    });
     Route::middleware('auth')->group(function(){
         Route::get('/mypage/profile', 'profile');
         Route::patch('/mypage/profile/update', 'update');
@@ -15,9 +17,13 @@ Route::controller(RegisterController::class)->group(function(){
 });
 
 Route::controller(LoginController::class)->group(function(){
-    Route::get('/login', 'showLogin');
-    Route::post('/login', 'login');
-    Route::post('/logout', 'logout');
+    Route::middleware('guest')->group(function(){
+        Route::get('/login', 'showLogin')->name('login');
+        Route::post('/login', 'login');
+    });
+    Route::middleware('auth')->group(function(){
+        Route::post('/logout', 'logout')->name('logout');
+    });
 });
 
 Route::controller(ItemController::class)->group(function(){
