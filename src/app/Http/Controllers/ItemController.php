@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
+    public function index(){
+
+        if(Auth::check()){
+            $user = Auth::user();
+            $items = Item::where('user_id', '!=', $user->id )->get();
+        }else{
+            $items = Item::all();
+        }
+        return view( 'index', compact('items') );
+    }
+
     public function sell(){
         $user = Auth::user();
         $categories = Category::all();
@@ -41,6 +52,12 @@ class ItemController extends Controller
                 }
             }
             DB::commit();
+            if(!is_null($item->img_src)){
+                $file = $request->file('img_file');
+                $folder = 'user_' . $item->user_id . "/" . 'item_' . $item->id;
+                $extension = $file->getClientOriginalExtension();
+                $path = $file->storeAs($folder, 'img_src' . '.' . $extension, 'public');
+            }
             return redirect('/')->with('message', '出品が完了しました。');
         }catch(\Exception $e){
             DB::rollBack();

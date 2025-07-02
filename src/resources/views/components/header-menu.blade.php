@@ -11,5 +11,5 @@
         <div class="header-menu__area--link"><a href="/login">ログイン</a></div>
     @endif        
     <div class="header-menu__area--link"><a href="">マイページ</a></div>
-    <input class="header-menu__area--button" type="button" value="出品">
+    <input class="header-menu__area--button" onclick="location.href='/sell'" type="button" value="出品">
 </div>

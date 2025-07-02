@@ -16,34 +16,15 @@
 </div>
 
 <div class="item-lists">
+    @foreach($items as $item)
+        @php
+            $path = 'storage/user_' . $item->user_id . '/item_' . $item->id . '/img_src.jpg';
+        @endphp
     <div class="item-lists--group">
-        <div class="item-lists--image"></div>
-        <div class="item-lists--name">商品名</div> 
+        <div class="item-lists--image"><img src="{{ asset( $path ) }}" width="290" height="290"></div>
+        <div class="item-lists--name">{{ $item->name }}</div> 
     </div>
-    <div class="item-lists--group">
-        <div class="item-lists--image"></div>
-        <div class="item-lists--name">商品名</div> 
-    </div>
-    <div class="item-lists--group">
-        <div class="item-lists--image"></div>
-        <div class="item-lists--name">商品名</div> 
-    </div>
-    <div class="item-lists--group">
-        <div class="item-lists--image"></div>
-        <div class="item-lists--name">商品名</div> 
-    </div>
-    <div class="item-lists--group">
-        <div class="item-lists--image"></div>
-        <div class="item-lists--name">商品名</div> 
-    </div>
-    <div class="item-lists--group">
-        <div class="item-lists--image"></div>
-        <div class="item-lists--name">商品名</div> 
-    </div>
-    <div class="item-lists--group">
-        <div class="item-lists--image"></div>
-        <div class="item-lists--name">商品名</div> 
-    </div>
+    @endforeach
 </div>
 
 @endsection
