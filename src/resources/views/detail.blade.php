@@ -29,11 +29,18 @@
             </div>
             <div class="detail-content__icon-group">
                 <div class="detail-content__likes-group">
-                    <img src="{{ asset('img/star.png') }}">
-                    <div class="detail-content__total-count">0</div>
+                    <form action="{{ '/item/' . $item->id . '/like' }}" method="post">
+                    @csrf
+                        @isset($imgPath)
+                            <input class="detail-content__icon-group--img" type="image" src="{{ asset( $imgPath ) }}">
+                        @else
+                            <input class="detail-content__icon-group--img" type="image" src="{{ asset( 'img/star.png' ) }}">
+                        @endisset
+                    </form>
+                    <div class="detail-content__total-count">{{ $likeCount }}</div>
                 </div>
                 <div class="detail-content__talks-group">
-                    <img src="{{ asset('img/talk.png') }}">
+                    <img class="detail-content__icon-group--img" src="{{ asset('img/talk.png') }}">
                     <div class="detail-content__total-count">{{ $comments->count() }}</div>
                 </div>
             </div>
@@ -54,7 +61,7 @@
                 <div class="detail-content__sub-section--text">{{ $item->condition->content }}</div>
             </div>
 
-            <div class="detail-content__section--gray">{{ 'コメント(' . $comments->count() .')' }}</div>
+            <div class="detail-content__section--gray">{{ 'コメント(' . $comments->count() . ')' }}</div>
 
             @foreach($comments as $comment)
                 <div class="detail-content__user-group">
