@@ -7,6 +7,7 @@ use App\Models\Condition;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\CategoryItem;
+use App\Models\Like;
 use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,8 +69,20 @@ class ItemController extends Controller
 
     public function showItem($item_id){
         $item = Item::with(['categories', 'condition'])->find($item_id);
+        $likeCount = Like::where('item_id', $item_id)->count();      
         $comments = Comment::with(['user'])->where('item_id', $item_id)->orderBy('created_at', 'desc')->get();
-        return view('detail', compact('item', 'comments'));
+        $user = Auth::user();
+        if(Auth::check()){
+            $exists = Like::where('item_id', $item_id)->where('user_id', $user->id)->exists();
+            if( $exists ){
+                $imgPath = 'img/star-check.png';
+            }else{
+                $imgPath = 'img/star.png';
+            }
+            return view('detail', compact('item', 'comments', 'likeCount', 'imgPath'));
+        }else{
+            return view('detail', compact('item', 'comments', 'likeCount',));
+        }
     }
 
 }

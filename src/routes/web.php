@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 
 Route::controller(RegisterController::class)->group(function(){
     Route::middleware('guest')->group(function(){
@@ -39,5 +40,11 @@ Route::controller(ItemController::class)->group(function(){
 Route::controller(CommentController::class)->group(function(){
     Route::middleware('auth')->group(function(){
         Route::post('/item/{item_id}/comment', 'store');
+    });
+});
+
+Route::controller(LikeController::class)->group(function(){
+    Route::middleware('auth')->group(function(){
+        Route::post('/item/{item_id}/like', 'store');
     });
 });
