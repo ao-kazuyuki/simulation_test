@@ -18,12 +18,13 @@
 <div class="item-lists">
     @foreach($items as $item)
         @php
+            $url = '/item/' . $item->id;
             $path = 'storage/user_' . $item->user_id . '/item_' . $item->id . '/img_src.jpg';
         @endphp
-    <div class="item-lists--group">
+    <a href="{{ $url }}" class="item-lists--group">
         <div class="item-lists--image"><img src="{{ asset( $path ) }}" width="290" height="290"></div>
         <div class="item-lists--name">{{ $item->name }}</div> 
-    </div>
+    </a>
     @endforeach
 </div>
 
