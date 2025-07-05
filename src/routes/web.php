@@ -32,4 +32,5 @@ Route::controller(ItemController::class)->group(function(){
         Route::get('/sell', 'sell');
         Route::post('/sell', 'store');
     });
+    Route::get('/item/{item_id}', 'showItem');
 });

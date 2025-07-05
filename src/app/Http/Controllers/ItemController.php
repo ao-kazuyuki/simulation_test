@@ -65,4 +65,9 @@ class ItemController extends Controller
         }
     }
 
+    public function showItem($item_id){
+        $item = Item::with(['categories', 'condition'])->find($item_id);
+        return view('detail', compact('item'));
+    }
+
 }
