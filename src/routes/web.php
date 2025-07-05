@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CommentController;
 
 Route::controller(RegisterController::class)->group(function(){
     Route::middleware('guest')->group(function(){
@@ -33,4 +34,10 @@ Route::controller(ItemController::class)->group(function(){
         Route::post('/sell', 'store');
     });
     Route::get('/item/{item_id}', 'showItem');
+});
+
+Route::controller(CommentController::class)->group(function(){
+    Route::middleware('auth')->group(function(){
+        Route::post('/item/{item_id}/comment', 'store');
+    });
 });

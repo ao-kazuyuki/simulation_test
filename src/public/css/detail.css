@@ -155,7 +155,7 @@
 
 .detail-content__comment-area {
     width: 570px;
-    height: 70px;
+    min-height: 70px;
     background-color: #e5e5e5;
     margin-top: 20px;
     margin-bottom: 30px;
@@ -169,11 +169,15 @@
 .detail-content__textarea {
     font-size: 20px;
     margin-top: 10px;
-    margin-bottom: 50px;
     width: 570px;
     height: 250px;
     resize: none;
     border: 2px solid #d9d9d9;
     border-radius: 5px;
     padding: 15px;
+}
+
+.detail-content__error {
+    font-size: 18px;
+    color: #ff0000;
 }

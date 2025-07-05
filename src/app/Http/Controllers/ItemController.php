@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Item;
+use App\Models\Comment;
 use App\Models\CategoryItem;
 use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Http\Request;
@@ -67,7 +68,8 @@ class ItemController extends Controller
 
     public function showItem($item_id){
         $item = Item::with(['categories', 'condition'])->find($item_id);
-        return view('detail', compact('item'));
+        $comments = Comment::with(['user'])->where('item_id', $item_id)->orderBy('created_at', 'desc')->get();
+        return view('detail', compact('item', 'comments'));
     }
 
 }
