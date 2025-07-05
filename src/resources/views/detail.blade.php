@@ -34,7 +34,7 @@
                 </div>
                 <div class="detail-content__talks-group">
                     <img src="{{ asset('img/talk.png') }}">
-                    <div class="detail-content__total-count">0</div>
+                    <div class="detail-content__total-count">{{ $comments->count() }}</div>
                 </div>
             </div>
             <button type="button" class="detail-content__button">購入手続きへ</button>
@@ -54,18 +54,27 @@
                 <div class="detail-content__sub-section--text">{{ $item->condition->content }}</div>
             </div>
 
-            <div class="detail-content__section--gray">コメント()</div>
-            <div class="detail-content__user-group">
-                <div class="detail-content__user-icon"></div>
-                <div class="detail-content__user-name">山田太郎さん</div>
-            </div>
-            <div class="detail-content__comment-area">
-                <p>こちらにコメントが入ります。</p>
-            </div>
+            <div class="detail-content__section--gray">{{ 'コメント(' . $comments->count() .')' }}</div>
 
-            <div class="detail-content__sub-section">商品へのコメント</div>
-            <textarea class="detail-content__textarea"></textarea>
-            <button type="button" class="detail-content__button">コメントを送信する</button>
+            @foreach($comments as $comment)
+                <div class="detail-content__user-group">
+                    <div class="detail-content__user-icon"></div>
+                    <div class="detail-content__user-name">{{ $comment->user->name }}</div>
+                </div>
+                <div class="detail-content__comment-area">
+                    <p>{{ $comment->content }}</p>
+                </div>
+            @endforeach
+
+            <form novalidate action="{{ '/item/' . $item->id . '/comment' }}" method="post">
+                @csrf
+                <div class="detail-content__sub-section">商品へのコメント</div>
+                <textarea name="content" class="detail-content__textarea"></textarea>
+                @error('content')
+                    <div class="detail-content__error">{{ $message }}</div>
+                @enderror
+                <button type="submit" class="detail-content__button">コメントを送信する</button>
+            </form>
         </div>
     </div>
     <div style="margin-bottom:178px;"></div>
