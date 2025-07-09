@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\BuyController;
 
 Route::controller(RegisterController::class)->group(function(){
     Route::middleware('guest')->group(function(){
@@ -46,5 +47,15 @@ Route::controller(CommentController::class)->group(function(){
 Route::controller(LikeController::class)->group(function(){
     Route::middleware('auth')->group(function(){
         Route::post('/item/{item_id}/like', 'store');
+    });
+});
+
+Route::controller(BuyController::class)->group(function(){
+    Route::middleware('auth')->group(function(){
+        Route::get('/purchase/{item_id}', 'showBuyView');
+        Route::patch('/purchase/{item_id}', 'showBuyViewChangedAddr');
+        Route::post('/purchase/{item_id}', 'store');
+        Route::post('/purchase/address/{item_id}', 'showChangeAddress');
+        Route::get('/purchase/address/{item_id}', 'showChangeAddress');
     });
 });
