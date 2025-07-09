@@ -1,0 +1,143 @@
+.buy-content {
+    display: flex;
+    justify-content: center;
+}
+
+.buy-content__left {
+    margin-top: 95px;
+    margin-left: 80px;
+    margin-right: 100px;
+}
+
+.buy-content__right {
+    margin-top: 95px;
+    margin-right: 85px;
+}
+
+.buy-content__img {
+    width: 175px;
+    height: 175px;
+    margin-right: 55px;
+}
+
+.buy-content__item-info {
+    width: 575px;
+    height: 175px;
+    margin-bottom: 45px;
+}
+
+.buy-content__item-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.detail-content__price-group {
+    display: flex;
+    align-items: flex-end;
+}
+
+.buy-content__currency {
+    font-size: 25px;
+}
+
+.buy-content__item-price {
+    font-size: 30px;
+}
+
+.line {
+    width: 805px;
+    border-bottom: 1px solid #000000;
+}
+
+.buy-content__section {
+    font-size: 20px;
+    font-weight: bold;
+    width: 325px;
+    height: 85px;
+    line-height: 85px;
+    margin-left: 35px;
+}
+
+.buy-content__selecter {
+    margin-left: 95px;
+    width: 265px;
+    height: 30px;
+}
+
+.buy-content__delivery-group {
+    display: flex;
+    justify-content: space-between;
+    width: 805px;
+}
+
+.buy-content__change-delivery {
+    width: 115px;
+    height: 85px;
+}
+
+.buy-content__change-button {
+    border: none;
+    color: #0073cc;
+    line-height: 85px;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.buy-content__user-address {
+    width: 710px;
+    height: 60px;
+    padding-left: 20px;
+}
+
+.buy-content__radio {
+    width: 20px;
+    height: 20px;
+}
+
+.buy-content__string {
+    font-size: 20px;
+}
+
+.buy-content__table,
+.buy-content__table th,
+.buy-content__table td {
+    border: 1px solid #000000;
+}
+
+.buy-content__table th,
+.buy-content__table td {
+    font-weight: normal;
+    width: 220px;
+    height: 115px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.buy-content__table th {
+    border-right: none;
+}
+
+.buy-content__table td {
+    border-left: none;
+}
+
+.buy-content__error {
+    font-size: 18px;
+    min-height: 30px;
+    color: #ff0000;
+}
+
+.buy-content__button {
+    width: 440px;
+    height: 60px;
+    font-size: 30px;
+    color: #ffffff;
+    background-color: #ff5555;
+    border: none;
+    border-radius: 4px;
+    margin-top: 65px;
+    margin-bottom: 22px;
+    cursor: pointer;
+}

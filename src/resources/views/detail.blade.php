@@ -44,7 +44,9 @@
                     <div class="detail-content__total-count">{{ $comments->count() }}</div>
                 </div>
             </div>
-            <button type="button" class="detail-content__button">購入手続きへ</button>
+
+            <button class="detail-content__button" type="button" onclick="window.location.href='{{ '/purchase/' . $item->id }}';">購入手続きへ</button>
+
             <div class="detail-content__section">商品説明</div>
             <div class="detail-content__item-explanation">{{ $item->explanation }}</div>
             <div class="detail-content__section">商品の情報</div>
