@@ -28,6 +28,10 @@ class User extends Authenticatable
         return $this->hasMany(Buy::class);
     }
 
+    public function likedItems(){
+        return $this->belongsToMany(Item::class, 'likes', 'user_id', 'item_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

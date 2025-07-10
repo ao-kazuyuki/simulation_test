@@ -15,15 +15,25 @@ use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
-    public function index(){
-
+    public function index(Request $request){
         if(Auth::check()){
             $user = Auth::user();
-            $items = Item::where('user_id', '!=', $user->id )->get();
+            if($request->page=='mylist'){
+                $items = $user->likedItems()->with('buy')->orderBy('id', 'asc')->get();
+                return view('index', compact('items', 'request'));
+            }else{
+                $items = Item::where('user_id', '!=', $user->id)->with('buy')->get();
+                return view('index', compact('items'));
+            }
         }else{
-            $items = Item::all();
+            if($request->page=='mylist'){
+                $items = [];
+                return view('index', compact('items', 'request'));
+            }else{
+                $items = Item::with('buy')->get();
+                return view('index', compact('items'));
+            }
         }
-        return view( 'index', compact('items') );
     }
 
     public function sell(){

@@ -15,7 +15,7 @@
     <header class="header">
         <div class="header-item__group">
             <div class="header-logo__area">
-                <img src="{{ asset('img/logo.svg') }}">
+                <a href="/"><img src="{{ asset('img/logo.svg') }}"></a>
             </div>
             @yield('header-menu')
         </div>
