@@ -14,6 +14,7 @@ Route::controller(RegisterController::class)->group(function(){
         Route::post('/register', 'store');
     });
     Route::middleware('auth')->group(function(){
+        Route::get('/mypage', 'mypage');
         Route::get('/mypage/profile', 'profile');
         Route::patch('/mypage/profile/update', 'update');
     });

@@ -10,6 +10,6 @@
     @else
         <div class="header-menu__area--link"><a href="/login">ログイン</a></div>
     @endif        
-    <div class="header-menu__area--link"><a href="">マイページ</a></div>
+    <div class="header-menu__area--link"><a href="/mypage/?page=sell">マイページ</a></div>
     <input class="header-menu__area--button" onclick="location.href='/sell'" type="button" value="出品">
 </div>
