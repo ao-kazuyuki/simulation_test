@@ -52,7 +52,7 @@
                         const hiddenElm = document.getElementById('img_src');
                         hiddenElm.value = file.name;
                     };
-                    reader.readAsDataURL(file);     //todo:要検討
+                    reader.readAsDataURL(file);
                 });
             </script>
         </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Item;
+use App\Models\Buy;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
@@ -23,6 +25,17 @@ class RegisterController extends Controller
         ]);
         Auth::login($user);
         return redirect('/mypage/profile');
+    }
+
+    public function mypage(Request $request){
+        $user = Auth::user();
+        if($request->page=='sell'){
+            $items = Item::where('user_id', '=', $user->id)->with('buy')->get();
+            return view('mypage.mypage', compact('items', 'request', 'user'));
+        }else if($request->page=='buy'){
+            $items = $user->boughtItems()->get();
+            return view('mypage.mypage', compact('items', 'request', 'user'));
+        }
     }
 
     public function profile(){

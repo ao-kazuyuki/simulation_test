@@ -32,6 +32,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Item::class, 'likes', 'user_id', 'item_id');
     }
 
+    public function boughtItems(){
+        return $this->hasManyThrough(
+            Item::class,
+            Buy::class,
+            'user_id',
+            'id',
+            'id',
+            'item_id',
+        );
+    }
+
     /**
      * The attributes that are mass assignable.
      *
