@@ -44,11 +44,12 @@ class ItemController extends Controller
     }
 
     public function store( ExhibitionRequest $request ){
+        $user = Auth::user();
         DB::beginTransaction();
         try{
             $item = Item::create([
                 'img_src' => $request['img_src'],
-                'user_id' => $request['id'],
+                'user_id' => $user->id,
                 'condition_id' => $request['condition'],
                 'name' => $request['name'],
                 'brand' => $request['brand'],

@@ -11,12 +11,10 @@
     @yield('css')
 </head>
 
-<body>
+<body>  
     <header class="header">
         <div class="header-item__group">
-            <div class="header-logo__area">
-                <a href="/"><img src="{{ asset('img/logo.svg') }}"></a>
-            </div>
+            <a href="/"><img class="header-logo__img" src="{{ asset('img/logo.svg') }}" alt="ロゴ画像"></a>
             @yield('header-menu')
         </div>
     </header>

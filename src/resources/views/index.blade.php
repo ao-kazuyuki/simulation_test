@@ -12,34 +12,36 @@
 @section('content')
 
 <div class="item-menu">
-
     @isset($request)
         @if($request->page=='mylist')
-            <div class="item-menu__link"><a href="/">おすすめ</a></div>
-            <div class="item-menu__link--strong"><a href="/?page=mylist">マイリスト</a></div>
+            <a class="item-menu__link" href="/">おすすめ</a>
+            <a class="item-menu__link--strong" href="/?page=mylist">マイリスト</a>
         @endif
     @else
-        <div class="item-menu__link--strong"><a href="/">おすすめ</a></div>
-        <div class="item-menu__link"><a href="/?page=mylist">マイリスト</a></div>
+        <a class="item-menu__link--strong" href="/">おすすめ</a>
+        <a class="item-menu__link" href="/?page=mylist">マイリスト</a>
     @endisset
-
 </div>
 
 <div class="item-lists">
     @foreach($items as $item)
         @php
             $url = '/item/' . $item->id;
-            $path = 'storage/user_' . $item->user_id . '/item_' . $item->id . '/img_src.jpg';
+            $path = 'storage/user_' . $item->user_id . '/item_' . $item->id . '/';
+            $file = glob($path . '*');
+            if(!empty($file)){
+                $path .= basename($file[0]);
+            }
         @endphp
-    <a href="{{ $url }}" class="item-lists--group">
-        <div class="item-lists--image">
-            <img src="{{ asset( $path ) }}" width="290" height="290">
-            @if($item->buy)
-                <div class="item-sold">Sold</div>
-            @endif
-        </div>
-        <div class="item-lists--name">{{ $item->name }}</div> 
-    </a>
+        <a href="{{ $url }}" class="item-group">
+            <div class="item-image">
+                <img src="{{ asset( $path ) }}">
+                @if($item->buy)
+                    <div class="item-sold">Sold</div>
+                @endif
+            </div>
+            <span class="item-name">{{ $item->name }}</span>
+        </a>
     @endforeach
 </div>
 

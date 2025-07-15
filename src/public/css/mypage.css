@@ -1,8 +1,15 @@
 .mypage-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 80px auto;
-    width: 1000px;
+    padding: 0 200px 0 300px;
+    width: 100%;
     height: 150px;
+}
+
+.mypage-header__user-group {
+    display: flex;
     align-items: center;
 }
 
@@ -15,9 +22,9 @@
 
 .mypage-header__user-name {
     font-size: 36px;
+    font-weight: bold;
     padding: 10px 20px;
     margin-left: 60px;
-    margin-right: 250px;
 }
 
 .mypage-header__edit-button {
@@ -38,6 +45,7 @@
 
 .item-menu {
     display: flex;
+    align-items: center;
     width: 100%;
     height: 50px;
     margin-top: 50px;
@@ -47,21 +55,21 @@
 
 .item-menu__link,
 .item-menu__link--strong {
+    display: block;
+    width: 155px;
+    height: 40px;
     font-size: 24px;
     font-weight: bold;
     text-align: right;
-    width: 155px;
-    height: 40px;
     margin-right: 50px;
+    text-decoration: none;
 }
 
-.item-menu__link a {
-    text-decoration: none;
+.item-menu__link {
     color: #5f5f5f;
 }
 
-.item-menu__link--strong a {
-    text-decoration: none;
+.item-menu__link--strong {
     color: #ff0000;
 }
 
@@ -71,7 +79,7 @@
     margin: 75px 0 75px 70px;
 }
 
-.item-lists--group {
+.item-group {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -83,14 +91,19 @@
     margin-bottom: 75px;
 }
 
-.item-lists--image {
+.item-image {
     position: relative;
     display: block;
     width: 290px;
     height: 290px;
-    border-radius: 4px;
     border: none;
     background-color: #d9d9d9;
+}
+
+.item-image img {
+    width: 290px;
+    height: 290px;
+    border-radius: 4px;
 }
 
 .item-sold {
@@ -110,6 +123,6 @@
     z-index: 1;
 }
 
-.item-lists--name {
+.item-name {
     font-size: 25px;
 }
