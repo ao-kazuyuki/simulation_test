@@ -15,12 +15,12 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('img_src', 100);
+            $table->string('img_src');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('condition_id')->constrained()->cascadeOnDelete();
-            $table->string('name', 100);
-            $table->string('brand', 100)->nullable();
-            $table->string('explanation', 100);
+            $table->string('name');
+            $table->string('brand')->nullable();
+            $table->string('explanation');
             $table->integer('price');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();

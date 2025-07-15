@@ -15,7 +15,7 @@ class CreateConditionsTable extends Migration
     {
         Schema::create('conditions', function (Blueprint $table) {
             $table->id();
-            $table->string('content', 100);
+            $table->string('content');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
