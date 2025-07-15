@@ -18,9 +18,9 @@ class CreateBuysTable extends Migration
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('payment_id')->constrained()->cascadeOnDelete();
-            $table->string('post_code', 100);
-            $table->string('address', 100);
-            $table->string('building', 100);
+            $table->string('post_code', 8);
+            $table->string('address');
+            $table->string('building');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
