@@ -44,7 +44,8 @@ class RegisterController extends Controller
     }
 
     public function update( ProfileRequest $request ){
-        User::find($request->id)->update([
+        $user = Auth::user();
+        User::find($user->id)->update([
             'img_src' => $request['img_src'],
             'name' => $request['name'],
             'post_code' => $request['post_code'],

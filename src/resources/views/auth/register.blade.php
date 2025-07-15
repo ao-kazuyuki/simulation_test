@@ -5,55 +5,55 @@
 @endsection
 
 @section('content')
-<form novalidate action="/register" method="post">
+<form class="register-form" novalidate action="/register" method="post">
     @csrf
-    <div class="form-menu" style="margin-top:96px;">
-
-        <h1 class="form-menu__title" style="margin-top:0;margin-bottom:55px;">会員登録</h1>
-
-        <div class="form-menu__group">
-            <div class="form-menu__section-group">
-                <h2 class="form-menu__section">ユーザー名</h2>
-                @error('name')
-                    <span class="form-menu__error">{{ $message }}</span>
-                @enderror
-            </div>
-            <input class="form-menu__input" name="name" type="text" value="{{ old('name') }}">
-        </div>
-
-        <div class="form-menu__group">
-            <div class="form-menu__section-group">
-                <h2 class="form-menu__section">メールアドレス</h2>
-                @error('email')
-                    <span class="form-menu__error">{{ $message }}</span>
-                @enderror
-            </div>
-            <input class="form-menu__input" name="email" type="email" value="{{ old('email') }}">
-        </div>
-
-        <div class="form-menu__group">
-            <div class="form-menu__section-group">
-                <h2 class="form-menu__section">パスワード</h2>
-                @error('password')
-                    <span class="form-menu__error">{{ $message }}</span>
-                @enderror
-            </div>
-            <input class="form-menu__input" name="password" type="password">
-        </div>
-
-        <div class="form-menu__group">
-            <div class="form-menu__section-group">
-            <h2 class="form-menu__section">確認用パスワード</h2>
-            @error('password_confirmation')
-                <span class="form-menu__error">{{ $message }}</span>
+    <h1 class="register-form__title">会員登録</h1>
+    <!-- ユーザー名 -->
+    <div>
+        <h2 class="register-section">ユーザー名</h2>
+        <input class="register-input" name="name" type="text" value="{{ old('name') }}">
+        <div class="form-error">
+            @error('name')
+                {{ $message }}
             @enderror
-            </div>
-            <input class="form-menu__input" style="margin-bottom:116px;" name="password_confirmation" type="password">
         </div>
-
-        <input class="form-menu__button" type="submit" value="登録する">
-        <div class="form-menu__link"><a href="/login">ログインはこちら</a></div>
-
     </div>
+    <!-- メールアドレス -->
+    <div>
+        <h2 class="register-section">メールアドレス</h2>
+        <input class="register-input" name="email" type="email" value="{{ old('email') }}">
+        <div class="form-error">
+            @error('email')
+                {{ $message }}
+            @enderror
+        </div>
+    </div>
+    <!-- パスワード -->
+    <div>
+        <h2 class="register-section">パスワード</h2>
+        <input class="register-input" name="password" type="password">
+        <div class="form-error">
+            @error('password')
+                {{ $message }}
+            @enderror
+        </div>
+    </div>
+    <!-- 確認用パスワード -->
+    <div>
+        <h2 class="register-section">確認用パスワード</h2>
+        <input class="register-input" name="password_confirmation" type="password">
+        <div class="form-error">
+            @error('password_confirmation')
+                {{ $message }}
+            @enderror
+        </div>
+    </div>
+    <!-- 登録ボタン -->
+    <input class="register-button" type="submit" value="登録する">
 </form>
+
+<!-- ログインへのリンク -->
+<div class="link-area">
+    <a href="/login">ログインはこちら</a>
+</div>
 @endsection

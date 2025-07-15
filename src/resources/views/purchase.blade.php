@@ -11,7 +11,11 @@
 
 @section('content')
     @php
-        $path = 'storage/user_' . $item->user_id . '/item_' . $item->id . '/img_src.jpg';
+        $path = 'storage/user_' . $item->user_id . '/item_' . $item->id . '/';
+        $file = glob($path . '*');
+        if(!empty($file)){
+            $path .= basename($file[0]);
+        }
         if(isset($isChanged)){
             $postCode = $changedPostCode;
             $addr = $changedAddress;
@@ -54,73 +58,94 @@
         }
     @endphp
 
-    <div class="buy-content">
-        <div class="buy-content__left">
-            <div style="display:flex;">
-                <img class="buy-content__img" src="{{ asset( $path ) }}">
-                <div class="buy-content__item-info">
-                    <div class="buy-content__item-name">{{ $item->name }}</div>
-                    <div class="detail-content__price-group">
-                        <div class="buy-content__currency">￥</div>
-                        <div class="buy-content__item-price">{{ number_format($item->price) }}</div>
+    <div class="buy-group">
+        <!-- コンテンツ(左側) -->
+        <div class="buy-layout__left">
+            <!-- 商品情報 -->
+            <div class="buy-item__group">
+                <img class="buy-item__img" src="{{ asset( $path ) }}">
+                <div class="buy-item__info">
+                    <h1 class="buy-item__section">{{ $item->name }}</h1>
+                    <div class="buy-price__group">
+                        <span class="buy-currency">￥</span>
+                        <span class="buy-price">{{ number_format($item->price) }}</span>
                     </div>
                 </div>
             </div>
             <div class="line"></div>
             <form action="{{ '/purchase/address/' . $item->id }}" method="post">
                 @csrf
-                <div style="margin-bottom: 64px;">
-                    <div class="buy-content__section">支払い方法</div>
-                    <select id="payment" class="buy-content__selecter" name="payment">
-                        <option value="" selected>選択してください</option>
-                        @foreach($payments as $payment)
-                            <option value="{{ $payment->id }}" {{ $selectPaymentValue == $payment->id ? 'selected' : '' }}>{{ $payment->content }}</option>
-                        @endforeach
-                    </select>
-                    <div style="margin-left:95px;" class="buy-content__error">@error('payment_value') {{ $message }} @enderror</div>
+                <!-- 支払い方法 -->
+                <div class="payment-group">
+                    <h2 class="buy-option__section">支払い方法</h2>
+                    <div class="buy-payment__selecter">
+                        <select id="payment" name="payment">
+                            <option value="" selected hidden>選択してください</option>
+                            @foreach($payments as $payment)
+                                <option class="buy-payment__drop" value="{{ $payment->id }}" {{ $selectPaymentValue == $payment->id ? 'selected' : '' }}>
+                                    {{ $payment->content }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <span class="buy-payment__error">
+                        @error('payment_value')
+                            {{ $message }}
+                        @enderror
+                    </span>
                 </div>
                 <div class="line"></div>
-                <div class="buy-content__delivery-group">
-                <div class="buy-content__section">配送先</div>
-                <div class="buy-content__change-delivery">
-                    <input type="hidden" name="post_code" value="{{ $postCode }}">
-                    <input type="hidden" name="address" value="{{ $addr }}">
-                    <input type="hidden" name="building" value="{{ $building }}">
-                    <button class="buy-content__change-button" type="submit">変更する</button>
+                <!-- 配送先 -->
+                <div class="buy-delivery-group">
+                    <h2 class="buy-option__section">配送先</h2>
+                    <div class="buy-change__delivery">
+                        <input type="hidden" name="post_code" value="{{ $postCode }}">
+                        <input type="hidden" name="address" value="{{ $addr }}">
+                        <input type="hidden" name="building" value="{{ $building }}">
+                        <button class="buy-change__link" type="submit">変更する</button>
+                    </div>
                 </div>
+                <div class="buy-address__group">
+                    <input class="buy-radio" type="radio" id="delivery-radio" name="delivery-radio" {{ $selectedStateDelivery }}>
+                    <div class="buy-user__address">
+                        <div class="buy-text">{{ $postCode }}</div>
+                        <div class="buy-text">{{ $addr . $building }}</div>
+                        <span class="buy-address__error">
+                            @error('check_delivery')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+                <div class="line"></div>
             </form>
-            </div>
-            <div style="display:flex;margin-bottom:60px;margin-left:95px;align-items:center;">
-                <input class="buy-content__radio" type="radio" id="delivery-radio" name="delivery-radio" {{ $selectedStateDelivery }}>
-                <div class="buy-content__user-address">
-                    <div class="buy-content__string">{{ $postCode }}</div>
-                    <div class="buy-content__string">{{ $addr . $building }}</div>
-                    <span class="buy-content__error">@error('check_delivery') {{ $message }} @enderror</span>
-                </div>
-            </div>
-            <div class="line"></div>
         </div>
-        <form action="{{ '/purchase/' . $item->id }}" method="post">
+        <!-- コンテンツ右側 -->
+        <form class="buy-layout__right" action="{{ '/purchase/' . $item->id }}" method="post">
             @csrf
             <input type="radio" id="check_delivery" name="check_delivery" style="display:none;" {{ $selectedStateDelivery }}>
             <input type="hidden" name="payment_value" id="payment_value" value="{{ $selectPaymentValue }}">
             <input type="hidden" name="post_code" value="{{ $postCode }}">
             <input type="hidden" name="address" value="{{ $addr }}">
             <input type="hidden" name="building" value="{{ $building }}">
-            <div class="buy-content__right">
-                <table class="buy-content__table">
-                    <tr>
-                        <th class="buy-content__string">商品代金</th>
-                        <td><span class="buy-content__currency">￥</span><span class="buy-content__item-price">{{ number_format($item->price) }}</span></td>
-                    </tr>
-                    <tr>
-                        <th class="buy-content__string">支払い方法</th>
-                        <td><span id="selected-payment" class="buy-content__string">{{ $paymentType }}</span></td>
-                    </tr>
-                </table>
-                <button type="submit" class="buy-content__button">購入する</button>
-            </div>
+            <!-- 購入情報の転記 -->
+            <table class="buy-table">
+                <tr>
+                    <th class="buy-text">商品代金</th>
+                    <td>
+                        <span class="buy-currency">￥</span>
+                        <span class="buy-price">{{ number_format($item->price) }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="buy-text">支払い方法</th>
+                    <td><span id="selected-payment" class="buy-text">{{ $paymentType }}</span></td>
+                </tr>
+            </table>
+            <!-- 購入ボタン -->
+            <button type="submit" class="buy-button">購入する</button>
         </form>
+        <!-- 支払い方法の転記と記憶 -->
         <script>
             const deliveryRadio = document.getElementById('delivery-radio');
             const checkDelivery = document.getElementById('check_delivery');

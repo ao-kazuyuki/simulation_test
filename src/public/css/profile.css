@@ -1,11 +1,28 @@
-.profile-content__input-image {
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    width: 680px;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.profile-form__title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.profile-image__group {
     display: flex;
     align-items: center;
     width: 680px;
-    margin-bottom: 76px;
+    margin-bottom: 75px;
 }
 
-.profile-content__input-image--circle {
+.profile-image__circle {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,29 +33,66 @@
     border-radius: 50%;
 }
 
-.profile-content__input-image--group {
-    display: flex;
-    flex-direction: column;
+.profile-image__circle img {
+    width: 150px;
+    height: 150px;
 }
 
-.profile-content__input-image--group span {
-    margin-left: 40px;
+.profile-image__select--group {
+    width: 530px;
+    padding-left: 40px;
+    text-align: left;
 }
 
-.profile-content__input-image--circle img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.profile-content__input-image--button {
+.profile-image__button {
     width: 180px;
     height: 50px;
+    margin-top: 24px;
     font-size: 20px;
     font-weight: bold;
     color: #ff5555;
     background-color: #ffffff;
     border-radius: 10px;
     border: 2px solid #ff5555;
-    margin-left: 40px;
     cursor: pointer;
+}
+
+.form-error {
+    font-size: 18px;
+    line-height: 24px;
+    min-height: 24px;
+    color: #ff0000;
+    text-align: left;
+    margin-bottom: 36px;
+}
+
+.profile-section {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin: 0;
+}
+
+.profile-input {
+    width: 680px;
+    height: 55px;
+    margin-top: 0;
+    border-radius: 4px;
+    font-size: 24px;
+    padding-left: 20px;
+    border: 1px solid #5f5f5f;
+}
+
+.profile__button {
+    width: 680px;
+    height: 65px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #FF5555;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 65px;
+    margin-bottom: 100px;
 }
