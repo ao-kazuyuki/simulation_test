@@ -1,4 +1,7 @@
-<input class="header-input" type="text" placeholder="なにをお探しですか？">
+<form action="/search" method="get">
+    @csrf
+    <input class="header-input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{ $searchWord ?? '' }}">
+</form>
 <div class="header-menu">
     @if (Auth::check())
         <form action="/logout" method="post">
