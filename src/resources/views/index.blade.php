@@ -5,7 +5,7 @@
 @endsection
 
 @section('header-menu')
-    @component('components.header-menu')
+    @component('components.header-menu', ['searchWord' => $searchWord ?? ''])
     @endcomponent
 @endsection
 
@@ -15,11 +15,11 @@
     @isset($request)
         @if($request->page=='mylist')
             <a class="item-menu__link" href="/">おすすめ</a>
-            <a class="item-menu__link--strong" href="/?page=mylist">マイリスト</a>
+            <a class="item-menu__link--strong" href="{{ url('/?page=mylist') . '&keyword=' . urlencode($searchWord ?? '') }}">マイリスト</a>
         @endif
     @else
         <a class="item-menu__link--strong" href="/">おすすめ</a>
-        <a class="item-menu__link" href="/?page=mylist">マイリスト</a>
+        <a class="item-menu__link" href="{{ url('/?page=mylist') . '&keyword=' . urlencode($searchWord ?? '') }}">マイリスト</a>
     @endisset
 </div>
 

@@ -19,8 +19,14 @@ class ItemController extends Controller
         if(Auth::check()){
             $user = Auth::user();
             if($request->page=='mylist'){
-                $items = $user->likedItems()->with('buy')->orderBy('id', 'asc')->get();
-                return view('index', compact('items', 'request'));
+                if(isset($request->keyword)){
+                    $searchWord = $request->keyword;
+                    $items = $user->likedItems()->KeywordSearch($searchWord)->with('buy')->orderBy('id', 'asc')->get();
+                    return view('index', compact('items', 'request', 'searchWord'));
+                }else{
+                    $items = $user->likedItems()->with('buy')->orderBy('id', 'asc')->get();
+                    return view('index', compact('items', 'request'));
+                }
             }else{
                 $items = Item::where('user_id', '!=', $user->id)->with('buy')->get();
                 return view('index', compact('items'));
@@ -33,6 +39,18 @@ class ItemController extends Controller
                 $items = Item::with('buy')->get();
                 return view('index', compact('items'));
             }
+        }
+    }
+
+    public function search(Request $request){
+        $searchWord = $request->keyword;
+        if(Auth::check()){
+            $user = Auth::user();
+            $items = Item::where('user_id', '!=', $user->id)->KeywordSearch($searchWord)->with('buy')->get();
+            return view('index', compact('items', 'searchWord'));
+        }else{
+            $items = Item::with('buy')->KeywordSearch($searchWord)->get();
+            return view('index', compact('items', 'searchWord'));
         }
     }
 

@@ -32,6 +32,7 @@ Route::controller(LoginController::class)->group(function(){
 
 Route::controller(ItemController::class)->group(function(){
     Route::get('/','index');
+    Route::get('/search', 'search');
     Route::middleware('auth')->group(function(){
         Route::get('/sell', 'sell');
         Route::post('/sell', 'store');
