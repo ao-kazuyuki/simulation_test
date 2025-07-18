@@ -158,6 +158,12 @@
     margin-right: 18px;
 }
 
+.detail__user-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
 .detail__user-name {
     line-height: 70px;
     font-size: 30px;

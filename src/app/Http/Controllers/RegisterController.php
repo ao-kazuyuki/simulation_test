@@ -52,6 +52,12 @@ class RegisterController extends Controller
             'address' => $request['address'],
             'building' => $request['building']
         ]);
+        if(!is_null($request['img_src'])){
+            $file = $request->file('img_file');
+            $folder = 'user_' . $user->id . "/" . 'icon';
+            $extension = $file->getClientOriginalExtension();
+            $path = $file->storeAs($folder, 'img_src' . '.' . $extension, 'public');
+        }
         return redirect('/');
     }
 }
