@@ -22,13 +22,15 @@
         }
     @endphp
     <div class="detail-group">
-        <!-- 商品画像 -->
-        <img class="detail-img" src="{{ asset( $path ) }}">
+        <!-- 商品画像(PC) -->
+        <img class="detail-img pc" src="{{ asset( $path ) }}">
         <!-- 商品詳細 -->
         <div class="detail-explanation">
             <!-- 商品名・ブランド名・商品価格 -->
             <h1 class="detail-section">{{ $item->name }}</h1>
             <h4 class="detail-brand">{{ $brand }}</h4>
+            <!-- 商品画像(タブレット) -->
+            <img class="detail-img tablet" src="{{ asset( $path ) }}">
             <div class="detail__price-group">
                 <span class="detail-price__currency">￥</span>
                 <span class="detail-price__value">{{ number_format($item->price) }}</span>
