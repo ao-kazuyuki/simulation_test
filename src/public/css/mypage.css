@@ -43,6 +43,14 @@
     text-align: center;
 }
 
+.pc {
+    display: block;
+}
+
+.tablet {
+    display: none;
+}
+
 .item-menu {
     display: flex;
     align-items: center;
@@ -125,4 +133,44 @@
 
 .item-name {
     font-size: 25px;
+}
+
+@media(max-width: 1399px) {
+    .mypage-header {
+        padding-left: 150px;
+    }
+
+    .mypage-header__user-name {
+        margin: 0 0 0 60px;
+    }
+
+    .pc {
+        display: none;
+    }
+
+    .tablet {
+        display: block;
+        margin-left: 60px;
+    }
+
+    .item-group {
+        width: 190px;
+        height: 220px;
+        margin-right: 40px;
+        margin-bottom: 45px;
+    }
+
+    .item-image {
+        width: 190px;
+        height: 190px;
+    }
+
+    .item-image img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .item-name {
+        font-size: 16px;
+    }
 }

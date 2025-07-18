@@ -10,6 +10,14 @@
     height: 600px;
 }
 
+.pc {
+    display: block;
+}
+
+.tablet {
+    display: none;
+}
+
 .detail-explanation {
     width: 690px;
     margin-left: 65px;
@@ -205,4 +213,26 @@
     margin-top: 30px;
     margin-bottom: 100px;
     cursor: pointer;
+}
+
+@media(max-width: 1399px) {
+    .detail-group {
+        display: block;
+    }
+
+    .detail-explanation {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+
+    .pc {
+        display: none;
+    }
+
+    .tablet {
+        display: block;
+        margin: 36px 0;
+    }
 }

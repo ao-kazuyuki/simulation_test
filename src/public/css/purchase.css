@@ -202,3 +202,47 @@
     margin-bottom: 22px;
     cursor: pointer;
 }
+
+@media(max-width: 1399px) {
+    .buy-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buy-layout__left {
+        width: 700px;
+        margin-right: 0;
+    }
+
+    .buy-item__group {
+        width: 700px;
+    }
+
+    .buy-item__info {
+        width: 470px;
+    }
+
+    .line {
+        width: 700px;
+    }
+
+    .payment-group {
+        width: 700px;
+    }
+
+    .buy-delivery-group {
+        width: 700px;
+    }
+
+    .buy-user__address {
+        width: 585px;
+    }
+
+    .buy-layout__right {
+        width: 700px;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        padding-left: 130px;
+        padding-right: 130px;
+    }
+}

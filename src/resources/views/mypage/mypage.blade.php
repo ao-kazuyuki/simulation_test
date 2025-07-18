@@ -13,9 +13,12 @@
 <div class="mypage-header">
     <div class="mypage-header__user-group">
         <div class="mypage-header__user-icon"></div>
-        <h1 class="mypage-header__user-name">{{ $user->name }}</h1>
+        <div>
+            <h1 class="mypage-header__user-name">{{ $user->name }}</h1>
+            <a href="/mypage/profile" class="mypage-header__edit-button tablet">プロフィールを編集</a>
+        </div>
     </div>
-    <a href="/mypage/profile" class="mypage-header__edit-button">プロフィールを編集</a>
+    <a href="/mypage/profile" class="mypage-header__edit-button pc">プロフィールを編集</a>
 </div>
 
 <div class="item-menu">
