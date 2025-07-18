@@ -76,8 +76,21 @@
             <!-- コメント一覧 -->
             <div class="detail-section__middle--gray">{{ 'コメント(' . $comments->count() . ')' }}</div>
             @foreach($comments as $comment)
+                @php
+                    $iconPath = 'storage/user_' . $comment->user->id . '/icon/';
+                    $iconFile = glob($iconPath . '*');
+                    if(!empty($iconFile)){
+                        $iconPath .= basename($iconFile[0]);
+                    }
+                @endphp
                 <div class="detail__flex-style">
-                    <div class="detail__user-icon"></div>
+                    @php
+                        if(!empty($iconFile)){
+                            echo '<img class="detail__user-image" src="' . asset( $iconPath ) . '">';
+                        }else{
+                            echo '<div class="detail__user-icon"></div>';
+                        }
+                    @endphp
                     <div class="detail__user-name">{{ $comment->user->name }}</div>
                 </div>
                 <div class="detail__comment-area">

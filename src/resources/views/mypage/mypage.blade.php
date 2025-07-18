@@ -9,10 +9,24 @@
     @endcomponent
 @endsection
 
+@php
+    $path = 'storage/user_' . $user->id . '/icon/';
+    $file = glob($path . '*');
+    if(!empty($file)){
+        $path .= basename($file[0]);
+    }
+@endphp
+
 @section('content')
 <div class="mypage-header">
     <div class="mypage-header__user-group">
-        <div class="mypage-header__user-icon"></div>
+        @php
+            if(!empty($file)){
+                echo '<img class="mypage-header__user-image" src="' . asset( $path ) . '">';
+            }else{
+                echo '<div class="mypage-header__user-icon"></div>';
+            }
+        @endphp
         <div>
             <h1 class="mypage-header__user-name">{{ $user->name }}</h1>
             <a href="/mypage/profile" class="mypage-header__edit-button tablet">プロフィールを編集</a>
