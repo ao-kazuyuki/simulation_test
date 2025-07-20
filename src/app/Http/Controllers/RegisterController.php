@@ -10,6 +10,7 @@ use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -55,8 +56,12 @@ class RegisterController extends Controller
         if(!is_null($request['img_src'])){
             $file = $request->file('img_file');
             $folder = 'user_' . $user->id . "/" . 'icon';
+            $fileList = Storage::disk('public')->files($folder);
+            if(!empty($fileList)){
+                Storage::disk('public')->delete($fileList);
+            }
             $extension = $file->getClientOriginalExtension();
-            $path = $file->storeAs($folder, 'img_src' . '.' . $extension, 'public');
+            $file->storeAs($folder, 'img_src' . '.' . $extension, 'public');
         }
         return redirect('/');
     }
