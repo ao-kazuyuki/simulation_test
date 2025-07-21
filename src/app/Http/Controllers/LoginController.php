@@ -23,7 +23,7 @@ class LoginController extends Controller
             return redirect()->intended('/');
         }
         throw ValidationException::withMessages([
-            'email' => __('ログイン情報が登録されていません。'),
+            'email' => __('ログイン情報が登録されていません'),
         ]);
     }
 
