@@ -38,26 +38,27 @@
     <dd>3. CREATE DATABASE demo_test;</dd>
     <dd>4. exit</dd>
     <dd>5. exit</dd>
-    <dd>6. cp .env .env.testing</dd>
-    <dd>7. .env.testingファイル内の下記の項目を以下のように修正</dd>
+    <dd>6. cd src</dd>
+    <dd>7. cp .env .env.testing</dd>
+    <dd>8. .env.testingファイル内の下記の項目を以下のように修正</dd>
     <dd>APP_ENV=test</dd>
     <dd>APP_KEY=</dd>
     <dd>DB_DATABASE=demo_test</dd>
     <dd>DB_USERNAME=root</dd>
     <dd>DB_PASSWORD=root</dd>
-    <dd>8. docker-compose exec php bash</dd>
-    <dd>9. php artisan key:generate --env=testing</dd>
-    <dd>10. php artisan config:clear</dd>
-    <dd>11. php artisan migrate --env=testing</dd>
-    <dd>12. exit</dd>
+    <dd>9. docker-compose exec php bash</dd>
+    <dd>10. php artisan key:generate --env=testing</dd>
+    <dd>11. php artisan config:clear</dd>
+    <dd>12. php artisan migrate --env=testing</dd>
+    <dd>13. exit</dd>
 </dl>
 
 <dl>
     <dt>テストファイル構成</dt>
     <dd>テストコードはスプレットシートのシート「テストケース一覧」のIDごとにテストファイルを生成し、tests/Featureフォルダ配下にあります。</dd>
     <dd>ID: 1 会員登録機能　MemberRegistrationTest.php</dd>
-    <dd>ID: 2 ログイン機能　MemberRoginTest.php</dd>
-    <dd>ID: 3 ログアウト機能　MemberRogout.php</dd>
+    <dd>ID: 2 ログイン機能　MemberLoginTest.php</dd>
+    <dd>ID: 3 ログアウト機能　MemberLogoutTest.php</dd>
     <dd>ID: 4 商品一覧取得　ItemTest.php</dd>
     <dd>ID: 5 マイリスト一覧取得　MyListTest.php</dd>
     <dd>ID: 6 商品検索機能　KeywordTest.php</dd>
