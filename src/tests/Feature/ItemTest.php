@@ -23,17 +23,18 @@ class ItemTest extends TestCase
      */
     public function testGetAllItems(){
         $response = $this->get('/');
+        //ダミー商品が全て存在するか確認
         $response->assertStatus(200)
-            ->assertSee('腕時計')
-            ->assertSee('HDD')
-            ->assertSee('玉ねぎ3束')
-            ->assertSee('革靴')
-            ->assertSee('ノートPC')
-            ->assertSee('マイク')
-            ->assertSee('ショルダーバッグ')
-            ->assertSee('タンブラー')
-            ->assertSee('コーヒーミル')
-            ->assertSee('メイクセット');
+            ->assertSeeText('腕時計')
+            ->assertSeeText('HDD')
+            ->assertSeeText('玉ねぎ3束')
+            ->assertSeeText('革靴')
+            ->assertSeeText('ノートPC')
+            ->assertSeeText('マイク')
+            ->assertSeeText('ショルダーバッグ')
+            ->assertSeeText('タンブラー')
+            ->assertSeeText('コーヒーミル')
+            ->assertSeeText('メイクセット');
     }
 
     /**
@@ -51,8 +52,7 @@ class ItemTest extends TestCase
         ]);
         $response = $this->get('/');
         //購入済み商品の存在チェック
-        $response->assertStatus(200)
-            ->assertSee('Sold');
+        $response->assertStatus(200)->assertSeeText('Sold');
     }
 
     /**
@@ -88,7 +88,7 @@ class ItemTest extends TestCase
         $response->assertRedirect('/');
         $this->assertAuthenticated();
         //自分が出品した商品名が存在しない事を確認
-        $this->get('/')->assertDontSee('マイアイテム');
+        $this->get('/')->assertDontSeeText('マイアイテム');
     }
 
 }

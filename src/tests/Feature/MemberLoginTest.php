@@ -59,11 +59,13 @@ class MemberLoginTest extends TestCase
      *  ID2-4:正しい情報が入力された場合、ログイン処理が実行される
      */
     public function testSuccessLogin(){
+        //ユーザーを生成
         $user = User::create([
             'name' => 'yamada',
             'email' => 'test@test.jp',
             'password' => Hash::make('12345678'),
         ]);
+        //生成したユーザーでログインテスト
         $response = $this->get('/login');
         $response->assertStatus(200);
         $response = $this->post('/login', [

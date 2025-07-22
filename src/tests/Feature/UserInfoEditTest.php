@@ -31,6 +31,8 @@ class UserInfoEditTest extends TestCase
             'email' => 'test@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //プロフィール設定画面で住所情報を設定する
         $postCode = '123-4567';
         $address = '東京都';
@@ -43,7 +45,7 @@ class UserInfoEditTest extends TestCase
         ]);
         //過去に行った住所の変更内容が表示されているかを確認
         $response = $this->get('/mypage/profile');
-        $response->assertSee($postCode)->assertSee($address)->assertSee($building);
+        $response->assertSeeText($postCode)->assertSeeText($address)->assertSeeText($building);
     }
 
 }

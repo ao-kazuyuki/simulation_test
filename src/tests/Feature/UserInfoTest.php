@@ -33,6 +33,8 @@ class UserInfoTest extends TestCase
             'email' => 'test@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //生成したユーザーIDを使って商品を出品
         $item = Item::create([
             'img_src' => 'img_src.jpg',
@@ -44,7 +46,7 @@ class UserInfoTest extends TestCase
         ]);
         //出品した商品(マイアイテム)が表示されていることを確認
         $response = $this->get('/mypage?page=sell');
-        $response->assertSee($user->name)->assertSee('マイアイテム');
+        $response->assertSeeText($user->name)->assertSeeText('マイアイテム');
         //商品の購入処理
         $buy = Buy::create([
             'item_id' => '1',
@@ -56,7 +58,7 @@ class UserInfoTest extends TestCase
         ]);
         //購入した商品(腕時計)が表示されており、売り切れ表示があることを確認
         $response = $this->get('/mypage?page=buy');
-        $response->assertSee($user->name)->assertSee('腕時計')->assertSee('Sold');
+        $response->assertSeeText($user->name)->assertSeeText('腕時計')->assertSeeText('Sold');
     }
 
 }

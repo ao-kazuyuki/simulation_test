@@ -32,6 +32,8 @@ class LikeTest extends TestCase
             'email' => 'test@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //商品ページにアクセスしていいねをする
         $response = $this->get('/item/1');
         $response->assertStatus(200);
@@ -58,11 +60,13 @@ class LikeTest extends TestCase
             'email' => 'test@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //商品ページにアクセスしていいねをする
         $response = $this->get('/item/1');
         $response->assertStatus(200);
         $response = $this->post('/item/1/like');
-        //色付きのいいねボタンの画像のファイル名がページにあるか調べる
+        //色付きのいいねボタンの画像のファイル名がソースにあるか調べる
         $response = $this->get('/item/1');
         $response->assertStatus(200)->assertSee('star-check.png');
     }
@@ -84,6 +88,8 @@ class LikeTest extends TestCase
             'email' => 'test@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //商品ページにアクセスしていいねをする
         $response = $this->get('/item/1');
         $response->assertStatus(200);

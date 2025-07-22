@@ -32,6 +32,8 @@ class DeliveryTest extends TestCase
             'email' => 'test@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //送付先住所変更画面を表示して送付先を入力
         $postCode = '123-4567';
         $address = '東京都';
@@ -44,7 +46,7 @@ class DeliveryTest extends TestCase
             'building' => $building,
         ]);
         //変更内容がページに表示されているか確認
-        $response->assertSee($postCode)->assertSee($address)->assertSee($building);
+        $response->assertSeeText($postCode)->assertSeeText($address)->assertSeeText($building);
     }
 
     /**
@@ -64,6 +66,8 @@ class DeliveryTest extends TestCase
             'email' => 'test@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //送付先住所変更画面を表示して送付先を入力
         $postCode = '123-4567';
         $address = '東京都';

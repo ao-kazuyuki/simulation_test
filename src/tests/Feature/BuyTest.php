@@ -31,6 +31,8 @@ class BuyTest extends TestCase
             'email' => 'yamada@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //購入処理を行う
         $response = $this->get('/purchase/1');
         $response->assertStatus(200);
@@ -63,6 +65,8 @@ class BuyTest extends TestCase
             'email' => 'yamada@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //購入処理を行う
         $response = $this->get('/purchase/1');
         $response->assertStatus(200);
@@ -75,7 +79,7 @@ class BuyTest extends TestCase
         ]);
         //売り切れを確認
         $response = $this->get('/');
-        $response->assertSee('Sold');
+        $response->assertSeeText('Sold');
     }
 
     /**
@@ -95,6 +99,8 @@ class BuyTest extends TestCase
             'email' => 'yamada@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //購入処理を行う
         $response = $this->get('/purchase/1');
         $response->assertStatus(200);
@@ -107,7 +113,7 @@ class BuyTest extends TestCase
         ]);
         //マイページの購入した商品を表示し売り切れを確認
         $response = $this->get('/mypage/?page=buy');
-        $response->assertSee('Sold');
+        $response->assertSeeText('Sold');
     }
 
 }

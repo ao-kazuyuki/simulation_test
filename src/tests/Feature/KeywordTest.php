@@ -19,9 +19,9 @@ class KeywordTest extends TestCase
      *  ID6-1:「商品名」で部分一致検索ができる
      */
     public function testKeyWordSearchItem(){
-        //商品「腕時計」を部分一致「時計」で検索し、結果を確認
+        //商品「腕時計」を部分一致「時計」で検索し、結果結果に商品「腕時計」があるか確認
         $response = $this->get('/search?keyword=時計');
-        $response->assertStatus(200)->assertSee('腕時計');
+        $response->assertStatus(200)->assertSeeText('腕時計');
     }
 
     /**
@@ -50,9 +50,9 @@ class KeywordTest extends TestCase
         $this->assertAuthenticated();
         //商品「腕時計」を部分一致「時計」で検索
         $response = $this->get('/search?keyword=時計');
-        //保持していた前回の検索キーワードをマイリスト取得時に渡しておく
+        //viewに渡される前回の検索キーワードが入った変数($searchWord)をマイリスト取得時に渡しておく
         $response = $this->get( url('/?page=mylist') . '&keyword=' . urlencode($searchWord ?? ''));
-        //同様に腕時計の商品がマイリストにも存在するか確認
-        $response->assertStatus(200)->assertSee('腕時計');
+        //腕時計の商品がマイリストにも存在するか確認
+        $response->assertStatus(200)->assertSeeText('腕時計');
     }
 }

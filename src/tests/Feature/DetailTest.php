@@ -69,16 +69,16 @@ class DetailTest extends TestCase
         $categories = Item::with(['categories'])->find($item->id);
         $conditions = Condition::all();
         $response->assertStatus(200)
-            ->assertSee($item->name)
-            ->assertSee($item->brand)
-            ->assertSee($item->price)
-            ->assertSee($likeCounts)
-            ->assertSee($comments->count())
-            ->assertSee($item->explanation)
-            ->assertSee($categories->toArray()['categories'][0]['content'])
-            ->assertSee($conditions[ $item->condition_id - 1 ]->toArray()['content'])
-            ->assertSee($comments->toArray()[0]['user']['name'])
-            ->assertSee($comments->toArray()[0]['content']);
+            ->assertSeeText($item->name)
+            ->assertSeeText($item->brand)
+            ->assertSeeText($item->price)
+            ->assertSeeText($likeCounts)
+            ->assertSeeText($comments->count())
+            ->assertSeeText($item->explanation)
+            ->assertSeeText($categories->toArray()['categories'][0]['content'])
+            ->assertSeeText($conditions[ $item->condition_id - 1 ]->toArray()['content'])
+            ->assertSeeText($comments->toArray()[0]['user']['name'])
+            ->assertSeeText($comments->toArray()[0]['content']);
     }
 
     /**
@@ -114,7 +114,7 @@ class DetailTest extends TestCase
         $response->assertStatus(200);
         $categories = Category::all();
         foreach($categoryNumList as $categoryNum){
-            $response->assertStatus(200)->assertSee($categories->toArray()[$categoryNum - 1]['content']);
+            $response->assertStatus(200)->assertSeeText($categories->toArray()[$categoryNum - 1]['content']);
         }
     }
 }

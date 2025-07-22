@@ -45,7 +45,7 @@ class MyListTest extends TestCase
         //マイリストを開き腕時計があるか調べる
         $response = $this->get('/?page=mylist');
         $response->assertStatus(200);
-        $this->get('/?page=mylist')->assertSee('腕時計');
+        $this->get('/?page=mylist')->assertSeeText('腕時計');
     }
 
     /**
@@ -85,8 +85,8 @@ class MyListTest extends TestCase
         $response = $this->get('/?page=mylist');
         $response->assertStatus(200);
         $this->get('/?page=mylist')
-            ->assertSee('腕時計')
-            ->assertSee('Sold');
+            ->assertSeeText('腕時計')
+            ->assertSeeText('Sold');
     }
 
     /**
@@ -124,7 +124,7 @@ class MyListTest extends TestCase
         //マイリストを開き自分が出品した商品名が存在しない事を確認
         $response = $this->get('/?page=mylist');
         $response->assertStatus(200);
-        $this->get('/?page=mylist')->assertDontSee('マイアイテム');
+        $this->get('/?page=mylist')->assertDontSeeText('マイアイテム');
     }
 
     /**

@@ -15,6 +15,6 @@ class PayTest extends TestCase
     protected $seed = true;
 
     public function testPaymentTypeChanged(){
-        //todo
+        //Featureテスト内でのテストを想定していましたがJavaScriptを使って、支払方法の即時変更処理を実装していたため、Featureテストでこのテストを実現できませんでした。
     }
 }

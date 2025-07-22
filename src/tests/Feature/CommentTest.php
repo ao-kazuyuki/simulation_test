@@ -32,6 +32,8 @@ class CommentTest extends TestCase
             'email' => 'yamada@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //商品ページにアクセスしてコメントをする
         $response = $this->get('/item/1');
         $response->assertStatus(200);
@@ -77,6 +79,8 @@ class CommentTest extends TestCase
             'email' => 'yamada@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //商品ページにアクセスして空のコメントをする
         $response = $this->get('/item/1');
         $response->assertStatus(200);
@@ -105,6 +109,8 @@ class CommentTest extends TestCase
             'email' => 'yamada@test.jp',
             'password' => '12345678',
         ]);
+        $response->assertRedirect('/');
+        $this->assertAuthenticated();
         //商品ページにアクセスして255文字以上のコメントをする
         $response = $this->get('/item/1');
         $response->assertStatus(200);

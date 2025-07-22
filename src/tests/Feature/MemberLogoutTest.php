@@ -17,7 +17,7 @@ class MemberLogoutTest extends TestCase
      *  ID3-1:ログアウトができる
      */
     public function testLogout(){
-        //ログイン
+        //ユーザーを生成してログイン
         $user = User::create([
             'name' => 'yamada',
             'email' => 'test@test.jp',
@@ -31,7 +31,7 @@ class MemberLogoutTest extends TestCase
         ]);
         $response->assertRedirect('/');
         $this->assertAuthenticated();
-        //ログアウト
+        //ログアウトを確認
         $response = $this->post('/logout');
         $response->assertRedirect('/');
         $this->assertGuest();
