@@ -22,7 +22,7 @@
     <dd>DB_PASSWORD=laravel_pass</dd>
     <dd>7. docker-compose exec php bash</dd>
     <dd>8. php artisan key:generate</dd>
-    <dd>9. php artisan migrate</dd>
+    <dd>9. php artisan migrate:fresh</dd>
     <dd>10. php artisan db:seed</dd>
     <dd>11. php artisan storage:link</dd>
     <dd>12. http://localhost/ にアクセスして動作確認</dd>
