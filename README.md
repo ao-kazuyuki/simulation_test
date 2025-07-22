@@ -25,8 +25,9 @@
     <dd>9. php artisan migrate:fresh</dd>
     <dd>10. php artisan db:seed</dd>
     <dd>11. php artisan storage:link</dd>
+    <dd>※ダミー商品の画像は10個と少量のため、環境構築を簡単にするためにstorageフォルダ内のダミーユーザー、ダミー商品のフォルダを共有しました。</dd>
     <dd>12. http://localhost/ にアクセスして動作確認</dd>
-    <dd>※Windows環境などでファイルの権限エラーが発生する場合は適宜パーミッションの変更を行うこと</dd>
+    <dd>※Windows環境などでファイルの権限エラーが発生する場合は適宜パーミッションの変更を行って下さい。</dd>
 </dl>
 
 ## 使用技術
