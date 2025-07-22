@@ -32,24 +32,24 @@
 
 <dl>
     <dt>テスト環境構築</dt>
-    <dd>docker-compose exec mysql bash</dd>
-    <dd>mysql -u root -p</dd>
+    <dd>1. docker-compose exec mysql bash</dd>
+    <dd>2. mysql -u root -p</dd>
     <dd>※パスワードはdocker-compose.ymlの「MYSQL_ROOT_PASSWORD」の項を確認して下さい。</dd>
     <dd>CREATE DATABASE demo_test;</dd>
-    <dd>exit</dd>
-    <dd>exit</dd>
-    <dd>cp .env .env.testing</dd>
-    <dd>.env.testingファイル内の下記の項目を以下のように修正</dd>
+    <dd>3. exit</dd>
+    <dd>4. exit</dd>
+    <dd>5. cp .env .env.testing</dd>
+    <dd>6. .env.testingファイル内の下記の項目を以下のように修正</dd>
     <dd>APP_ENV=test</dd>
     <dd>APP_KEY=</dd>
     <dd>DB_DATABASE=demo_test</dd>
     <dd>DB_USERNAME=root</dd>
     <dd>DB_PASSWORD=root</dd>
-    <dd>docker-compose exec php bash</dd>
-    <dd>php artisan key:generate --env=testing</dd>
-    <dd>php artisan config:clear</dd>
-    <dd>php artisan migrate --env=testing</dd>
-    <dd>exit</dd>
+    <dd>7. docker-compose exec php bash</dd>
+    <dd>8. php artisan key:generate --env=testing</dd>
+    <dd>9. php artisan config:clear</dd>
+    <dd>10. php artisan migrate --env=testing</dd>
+    <dd>11. exit</dd>
 </dl>
 
 <dl>
